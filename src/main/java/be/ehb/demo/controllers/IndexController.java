@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,6 +38,12 @@ public class IndexController {
         if(bindingResult.hasErrors())
             return "index";
         dao.save(nSnack);
+        return "redirect:/index";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteSnack(@PathVariable(value = "id") int id){
+        dao.deleteById(id);
         return "redirect:/index";
     }
 }
