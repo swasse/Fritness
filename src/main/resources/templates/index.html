@@ -20,5 +20,19 @@
             </tr>
         </tbody>
     </table>
+    <div>
+        <form th:action="@{~/index}" method="post" th:object="${nSnack}">
+            <label for="name">Name</label>
+            <input type="text" th:field="*{name}" id="name">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+            <label for="price">Price</label>
+            <input type="text" th:field="*{price}" id="price">
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+
+            <input type="submit">
+        </form>
+
+    </div>
 </body>
 </html>
